@@ -137,10 +137,10 @@ namespace _3
             #region Вывод инфы обо всех (LINQ)
             Console.WriteLine("Вывод инфы обо всех (LINQ): ");
             people.ForEach(x => {
-                if (x is Student)
-                    ((Student)x).Show();
-                else
-                    ((Aspirant)x).Show();
+                if (x is Student student)
+                    student.Show();
+                if (x is Aspirant aspirant)
+                    aspirant.Show();
             });
             /*people.OfType<Student>().ToList().ForEach(x => x.Show());
             people.OfType<Aspirant>().ToList().ForEach(x => x.Show());*/
