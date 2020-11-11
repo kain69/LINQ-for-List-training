@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace _3
 {
-    abstract class Person
+    public abstract class Person
     {
         public string Name { get; }
         public string Fac { get; }
@@ -28,7 +28,7 @@ namespace _3
         }
     }
 
-    class Student : Person
+    public class Student : Person
     {
         public int Rating { get; }
 
@@ -45,7 +45,7 @@ namespace _3
         }
     }
 
-    class Aspirant : Person
+    public class Aspirant : Person
     {
         public string Leader { get; }
         public string Code { get; }
@@ -135,6 +135,7 @@ namespace _3
             #endregion
 
             #region Вывод инфы обо всех (LINQ)
+            // Не так эфективно, как с помощью foreach
             Console.WriteLine("Вывод инфы обо всех (LINQ): ");
             people.OfType<Student>().ToList().ForEach(x => x.Show());
             people.OfType<Aspirant>().ToList().ForEach(x => x.Show());
