@@ -72,6 +72,7 @@ namespace _3
     {
         static void Main(string[] args)
         {
+            #region Инициализация
             List<Student> students = new List<Student>();
             students.Add(new Student("Кармазин", "Мехмат", 2019, 9));
             students.Add(new Student("Пономарев", "Эконом", 2019, 10));
@@ -86,18 +87,22 @@ namespace _3
 
             List<Person> people = new List<Person>(students);
             people.AddRange(aspirants);
+            #endregion
 
+            #region Студенты эконома топ 3 лучших(LINQ)
             Console.WriteLine("Студенты эконома топ 3 лучших(LINQ): ");
             students.Where(x => x.Fac == "Эконом").OrderBy(x => x.Rating).Take(3).ToList().ForEach(x => x.Show());
 
             Console.WriteLine();
+            #endregion
 
+            #region Студенты эконома топ 3 лучших (foreach):
             /*Console.WriteLine("Студенты эконома топ 3 лучших: ");
             students.Sort((x, y) => x.Rating.CompareTo(y.Rating));
             int count = 0;
             foreach (Student student in students)
             {
-                if(student.Fac == "Эконом")
+                if (student.Fac == "Эконом")
                 {
                     count++;
                     student.Show();
@@ -108,12 +113,16 @@ namespace _3
                 }
             }
             Console.WriteLine();*/
+            #endregion
 
+            #region Аспиранты завершающие обучение(LINQ)
             Console.WriteLine("Аспиранты завершающие обучение(LINQ): ");
             aspirants.Where(x => x.Year <= 2019 && x.Code == "05.13.11").ToList().ForEach(x => x.Show());
 
             Console.WriteLine();
+            #endregion
 
+            #region Аспиранты завершающие обучение (foreach):
             /*Console.WriteLine("Аспиранты завершающие обучение: ");
             foreach (Aspirant aspirant in aspirants)
             {
@@ -123,26 +132,31 @@ namespace _3
                 }
             }
             Console.WriteLine();*/
+            #endregion
 
+            #region Вывод инфы обо всех (LINQ)
             Console.WriteLine("Вывод инфы обо всех (LINQ): ");
             people.OfType<Student>().ToList().ForEach(x => x.Show());
             people.OfType<Aspirant>().ToList().ForEach(x => x.Show());
 
             Console.WriteLine();
+            #endregion
 
+            #region Вывод инфы обо всех (foreach):
             /*Console.WriteLine("Вывод инфы обо всех: ");
             foreach (Person person in people)
             {
                 if (person is Student)
                 {
-                    ((Student) person).Show();
-                    
+                    ((Student)person).Show();
+
                 }
                 if (person is Aspirant)
                 {
                     (person as Aspirant).Show();
                 }
             }*/
+            #endregion
 
             Console.ReadLine();
         }
