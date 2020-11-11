@@ -135,10 +135,15 @@ namespace _3
             #endregion
 
             #region Вывод инфы обо всех (LINQ)
-            // Не так эфективно, как с помощью foreach
             Console.WriteLine("Вывод инфы обо всех (LINQ): ");
-            people.OfType<Student>().ToList().ForEach(x => x.Show());
-            people.OfType<Aspirant>().ToList().ForEach(x => x.Show());
+            people.ForEach(x => {
+                if (x is Student)
+                    ((Student)x).Show();
+                else
+                    ((Aspirant)x).Show();
+            });
+            /*people.OfType<Student>().ToList().ForEach(x => x.Show());
+            people.OfType<Aspirant>().ToList().ForEach(x => x.Show());*/
 
             Console.WriteLine();
             #endregion
